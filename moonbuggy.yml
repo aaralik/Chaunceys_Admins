@@ -1,0 +1,18 @@
+---
+name: Install moon-buggy only on util-joyce
+hosts: util-joyce
+become: yes
+
+tasks:
+  - name: Update apt cache
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install moon-buggy
+    ansible.builtin.apt:
+      name: moon-buggy
+      state: present
+
+  - name: show success message
+    ansible.builtin.debug:
+      msg: "moon-buggy was installed only on util-joyce"
