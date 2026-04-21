@@ -1,0 +1,31 @@
+---
+- name: Add local Linux user
+  hosts: util-joyce
+  become: yes
+
+  tasks:
+    - name: Create local Linux user
+      user:
+        name: chauncey-ansible-local
+        password: "{{ 'lakechamplain' | password_hash('sha512') }}"
+        shell: /bin/bash
+        createhome: yes
+        state: present
+
+- name: Add Windows domain user
+  hosts: domaincontrollers
+  become: no
+
+  tasks:
+    - name: Create domain users
+      microsoft.ad.user:
+        name: chauncey-ansible-DU
+        firstname: chauncey
+        surname: ansible-DU
+        password: l@kech@mpl@1n
+        state: present
+        enabled: yes
+        groups:
+          add:
+            - Domain Users
+        update_password: when_changed
