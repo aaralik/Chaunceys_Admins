@@ -1,0 +1,10 @@
+---
+- name: Install tree via snap
+  hosts: util-joyce
+  become: yes
+
+  tasks:
+    - name: Install tree via snap
+      snap:
+        name: tree
+        state: present
