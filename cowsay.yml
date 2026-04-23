@@ -1,0 +1,14 @@
+---
+- name: Install package only on util-joyce
+  hosts: util-joyce
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install cowsay
+      apt:
+        name: cowsay
+        state: present
