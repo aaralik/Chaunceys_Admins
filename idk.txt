@@ -29,3 +29,7 @@ $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut(
 )
 
 $shortcut | Select-Object TargetPath, Arguments, IconLocation
+
+
+Get-WinEvent -ListLog '*SMBClient*' |
+Select-Object LogName, IsEnabled, RecordCount
