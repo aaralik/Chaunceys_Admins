@@ -23,3 +23,9 @@ Format-List
 
 Get-Item "$env:USERPROFILE\Desktop\ntlm.lnk" -ErrorAction SilentlyContinue |
 Select-Object FullName, Length, LastWriteTime
+
+$shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut(
+    "$env:USERPROFILE\Desktop\ntlm.lnk"
+)
+
+$shortcut | Select-Object TargetPath, Arguments, IconLocation
