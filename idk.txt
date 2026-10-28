@@ -19,3 +19,7 @@ Where-Object {
 } |
 Select-Object -First 5 TimeCreated, Id, Message |
 Format-List
+
+
+Get-Item "$env:USERPROFILE\Desktop\ntlm.lnk" -ErrorAction SilentlyContinue |
+Select-Object FullName, Length, LastWriteTime
