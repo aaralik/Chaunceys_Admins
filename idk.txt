@@ -1,0 +1,9 @@
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Microsoft-Windows-Sysmon/Operational'
+    Id = 3
+} -ErrorAction SilentlyContinue |
+Where-Object {
+    $_.Message -match 'DestinationPort: 445'
+} |
+Select-Object -First 10 TimeCreated, Id, Message |
+Format-List
