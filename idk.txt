@@ -7,3 +7,15 @@ Where-Object {
 } |
 Select-Object -First 10 TimeCreated, Id, Message |
 Format-List
+
+
+
+Get-WinEvent -FilterHashtable @{
+    LogName = 'Microsoft-Windows-Sysmon/Operational'
+    Id = 1
+} -ErrorAction SilentlyContinue |
+Where-Object {
+    $_.Message -match 'CredentialUIBroker.exe'
+} |
+Select-Object -First 5 TimeCreated, Id, Message |
+Format-List
